@@ -25,7 +25,7 @@
                         <label for="website_title">Website Title</label>
                         <input required type="text" id="title" maxlength="50" placeholder="Website title" />
                     </div>
-
+ 
                     <div class="form_item">
                         <label for="exposure">Exposure</label>
                         <select required id="ad_pack" name="timer" onchange="get_price(this.value)">
