@@ -67,7 +67,7 @@
                                       <?php  }?>
 
                                 </td>
-                            </tr>
+                            </tr> 
 
                             <?php }?>
                         </tbody>
