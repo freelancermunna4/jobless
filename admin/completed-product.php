@@ -6,7 +6,6 @@
     $start=0;
   }
     $uid=$data['id'];
-    $products=_getAllData($db,"SELECT * FROM product_system WHERE activity=1 AND conditions = 'Completed' ORDER BY id DESC ");
 ?>
 <div class="x_container space-y-10 py-10">
 
@@ -28,6 +27,7 @@
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Url</th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Category</th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Contact</th>
+                                <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Date</th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Status</th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Condition</th>
                                 <th scope="col" class="p-4 text-xs font-medium text-left text-center text-gray-500 uppercase lg:p-5">Action</th>
@@ -35,7 +35,23 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
 
-                                <?php foreach($products as $product){
+                                <?php 
+                                if (isset($_GET['page_no']) && $_GET['page_no']!="") {
+                                $page_no = $_GET['page_no'];} else {$page_no = 1;}
+                                $total_records_per_page = 8;
+                                $offset = ($page_no-1) * $total_records_per_page;
+                                $previous_page = $page_no - 1;
+                                $next_page = $page_no + 1;
+                                $adjacents = "2";
+
+                                $products=_getAllData($db,"SELECT * FROM product_system WHERE activity=1 AND conditions = 'Completed' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                                
+                                $result_count = $db->Query("SELECT * FROM product_system WHERE activity=1 AND conditions = 'Completed'");                       
+                                $total_records = mysqli_num_rows($result_count);
+                                $total_no_of_pages = ceil($total_records / $total_records_per_page);
+                                $second_last = $total_no_of_pages - 1;
+                                
+                                foreach($products as $product){
                                  $user_id = $product['uid'];
                                  $user_info = $db->Query("SELECT * FROM users WHERE id=$user_id");
                                  $user_info = mysqli_fetch_assoc($user_info);
@@ -51,6 +67,7 @@
                                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap text-center lg:p-5"><?php echo $product['web_link']?></td>
                                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap text-center lg:p-5"><?php echo $product['category']?></td>
                                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap text-center lg:p-5"><?php echo $product['contact']?></td>
+                                <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap text-center lg:p-5"><?php echo $product['job_time']?></td>
                                 <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap text-center lg:p-5"><?php echo $product['status']?></td>
                                 <td class="p-4 text-sm font-normal text-green-500 whitespace-nowrap text-center lg:p-5"><b><?php echo $product['conditions']?></b></td>
                                 <td class="p-4 text-sm font-normal text-gray-500 text-center whitespace-nowrap lg:p-5">
@@ -63,6 +80,100 @@
                             <?php } ?>
                         </tbody>
                     </table>
+
+
+                <div style="padding:20px 10px;">
+                <!-- /* ----------paginations----------- */ -->
+                <style>
+                .paginations>ul{box-shadow: 0 0 1px gray;margin: 0;padding: 10px;}
+                .paginations>ul>li{list-style: none;display: inline-block;line-height: 2.5;}
+                .paginations>ul>li>a{padding: 5px 10px;margin:5px;background: #fff;font-weight: bolder;box-shadow: 0px 0px 2px gray;}
+                .paginations>ul>li>a:hover{background: #209300;color: #fff;}
+                .active>a{background: #209300 !important;color: #fff !important;}
+                .page_of{padding-top: 10px;}
+                @media only screen and (max-width: 850px){.page_of{display: none;}}
+              </style>
+
+              <div style="display:flex;justify-content:space-between;padding:10px 20px;">
+                  <div class="paginations">
+                    <ul>
+                      <?php // if($page_no > 1){ echo "<li><a href='?page_no=1'>First Page</a></li>"; } ?>
+                        
+                      <li <?php if($page_no <= 1){ echo "class=''"; } ?>>
+                      <a <?php if($page_no > 1){ echo "href='?page_no=$previous_page'"; } ?>>Previous</a>
+                      </li>
+                          
+                        <?php 
+                      if ($total_no_of_pages <= 10){  	 
+                        for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
+                          if ($counter == $page_no) {
+                          echo "<li class=''><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }
+                            }
+                      }
+                      elseif($total_no_of_pages > 10){
+                        
+                      if($page_no <= 4) {			
+                      for ($counter = 1; $counter < 8; $counter++){		 
+                          if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }
+                            }
+                        echo "<li><a>...</a></li>";
+                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
+                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
+                        }
+
+                      elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
+                        echo "<li><a href='?page_no=1'>1</a></li>";
+                        echo "<li><a href='?page_no=2'>2</a></li>";
+                            echo "<li><a>...</a></li>";
+                            for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
+                              if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }                  
+                          }
+                          echo "<li><a>...</a></li>";
+                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
+                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
+                                }
+                        
+                        else {
+                            echo "<li><a href='?page_no=1'>1</a></li>";
+                        echo "<li><a href='?page_no=2'>2</a></li>";
+                            echo "<li><a>...</a></li>";
+
+                            for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
+                              if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }                   
+                                    }
+                                }
+                      }
+                    ?>
+                        
+                      <li <?php if($page_no >= $total_no_of_pages){ echo "class='disabled'"; } ?>>
+                      <a <?php if($page_no < $total_no_of_pages) { echo "href='?page_no=$next_page'"; } ?>>Next</a>
+                      </li>
+                        <?php if($page_no < $total_no_of_pages){
+                        echo "<li><a href='?page_no=$total_no_of_pages'>Last</a></li>";
+                        } ?>
+                    </ul>
+                  </div>
+                  <div class="page_of">
+                    <div><strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong></div>
+                  </div>
+                </div>
+                <!--  ----------paginations----------- -->
+                 </div>
 
                 </div>
             </div>

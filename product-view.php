@@ -122,10 +122,10 @@
                 ?>
                 <div class="view">
                     <div class="view_container" style="border:1px solid #c3c5cb;">
-                        <h6 class="title"><?php echo $row['product_title']?></h6>
                         <div class="thumbnail">
                             <img src="upload/<?php echo $row['file']?>" style="height:145px;">
                         </div>
+                        <h6 style="text-align:center" class="title"><?php echo $row['product_title']?></h6>
                         <div class="time">Price: <b><?php
                         if($row['amount'] == 0){echo "Contact Fast";}else{echo $row['amount'];}?></b></div>
                         <div class="time">Category: <b><?php echo $row['category']?></b></div>

@@ -28,6 +28,7 @@
                                 <th>Url</th>
                                 <th>Category</th>
                                 <th>Contact</th> 
+                                <th>Date</th> 
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -46,6 +47,7 @@
                                 <td><?php echo $product['web_link'];?></td>
                                 <td><?php echo $product['category'];?></td>
                                 <td><?php echo $product['contact'];?></td>
+                                <td><?php echo $product['job_time'];?></td>
                                 <td><?php echo $product['status'];?></td>
                                 <td>
                                     <a class="list_btn" style="background:#007bff;" href="product-page?id=<?php echo $product['id'];?>">View</a>

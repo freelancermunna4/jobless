@@ -50,9 +50,8 @@
 
                     <div class="form_item full_col">
                         <label for="category">Price</label>
-                        <select disabled required name="category" id="category">
-                            <option selected><?php echo $product['amount']?></option>
-                        </select>
+                        <input disabled type="text" name="product_title" id="product_title"
+                            placeholder="Product Title ... " value="<?php echo $product['amount']?>"  />
                     </div>              
 
                     <div class="form_item full_col">
@@ -60,6 +59,18 @@
                         <select disabled required name="category" id="category">
                             <option selected><?php echo $product['category']?></option>
                         </select>
+                    </div>             
+
+                    <div class="form_item full_col">
+                        <label for="category">Contact</label>
+                        <input disabled type="text" name="product_title" id="product_title"
+                            placeholder="Product Title ... " value="<?php echo $product['contact']?>"  />
+                    </div>         
+
+                    <div class="form_item full_col">
+                        <label for="category">Date</label>
+                        <input disabled type="text" name="product_title" id="product_title"
+                            placeholder="Product Title ... " value="<?php echo $product['job_time']?>"  />
                     </div>
 
                     <div class="form_item full_col">
@@ -67,18 +78,6 @@
                         <select disabled name="status" id="status">
                             <option selected><?php echo $product['status']?></option>
                         </select>
-                    </div>
-
-                    <div class="form_item price_contact">
-                        <label for="coin_per_product">Enter Your Price
-                        </label>
-                        <input disabled type="number" name="coin_per_product"  id="coin_per_product"
-                            placeholder="200"  value="<?php echo $product['amount']?>" />
-                    </div>
-
-                    <div class="form_item price_contact">
-                        <label for="contact_info">Contact Info</label>
-                        <input disabled type="text" name="contact_info" id="contact_info" placeholder="Phone Number Or Email" value="<?php echo $product['contact']?>" />
                     </div>
 
                     <div class="form_item full_col">

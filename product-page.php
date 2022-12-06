@@ -23,8 +23,6 @@
             <div class="page_content" style="display:flex;">
                 <div style="width:65%">
                     <div class="cf_wrapper">
-                        <h4 style="text-align:center"><b><?php echo $product['product_title'];?></b></h4>
-                        <br>
                         <img id="main_img" style="width:100%;height:400px;display:block;border-radius:5px;object-fit:cover" src="upload/<?php echo $product['file'];?>">                        
                         <br>
                         <div style="display:flex;align-items:space-between;justify-content: space-evenly;">
@@ -39,24 +37,8 @@
                         <img id="img4" style="width:22%;height:100px;display:block;border-radius:5px;" src="upload/<?php echo $product['file4'];?>">
                         <?php }?>
                         </div>
-
                         <br>
-                        <br>
-
-                        <div style="display:flex;justify-content:space-between;color:gray;">
-                            <div>
-                                <p style="padding:5px;">Price: <b><?php if($product['amount'] == '0'){echo 'Please Contact Fast';}else{echo $product['amount'];}?></b></p>
-                                <p style="padding:5px;">Category: <b><?php echo $product['category'];?></b></p>
-                                <?php 
-                                if(empty($product['web_link'])){ ?>
-                                <?php  }else{ ?>
-                                <p style="padding:5px;">Url: <b><a target="_blank" href="<?php echo $product['web_link'];?>"><?php echo $product['web_link'];?></a></b></p> 
-                                <?php  }?>                                
-                            </div>
-                            <div>
-                                <p>Date: <b>10/05/2022</b></p>
-                            </div>
-                        </div>
+                        <h4 style="text-align:center"><b><?php echo $product['product_title'];?></b></h4>
                     </div>
                     <div class="cf_wrapper" style="color:gray">
                     <?php echo $product['work_discription'];?>
@@ -67,7 +49,13 @@
                         <ul>
                             <li>For sale by <b><?php echo $user_info['fullname'];?></b></li>
                             <hr>
-                            <li>Contact <b><?php echo $product['contact'];?></b></li>
+                            <li>Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['amount'];?></b></li>
+                            <?php if(empty($product['web_link'])){  }else{ ?>
+                            <li>URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['web_link'];?></b></li>
+                            <?php  }?>
+                            <li>Category:&nbsp; <b><?php echo $product['category'];?></b></li> 
+                            <li>Contact:&nbsp;&nbsp;&nbsp; <b><?php echo $product['contact'];?></b></li>
+                            <li>Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['job_time'];?></b></li>
                         </ul>
                         <ul>
                             <li style="padding-left:15px;"><i style="color:skyblue" class="fa-solid fa-shield"></i><b> Safety tips</b></li>

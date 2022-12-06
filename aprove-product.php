@@ -28,6 +28,7 @@
                                 <th>Url</th>
                                 <th>Category</th>
                                 <th>Contact</th>
+                                <th>Date</th>
                                 <th>Status</th>
                                 <th>Conditions</th>
                                 <th>Action</th>
@@ -47,6 +48,7 @@
                                 <td><?php echo $product['web_link'];?></td>
                                 <td><?php echo $product['category'];?></td>
                                 <td><?php echo $product['contact'];?></td>
+                                <td><?php echo $product['job_time'];?></td>
                                 <td><?php echo $product['status'];?></td>
                                 <td>
                                     <?php if($product['conditions']=='Running'){ ?>

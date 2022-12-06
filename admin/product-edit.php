@@ -68,6 +68,11 @@ if(isset($_GET['id'])){
             </div>
 
             <div style="width:70%;margin:0 auto;padding:5px 0;">
+              <label for="">Date</label>
+              <input disabled type="text" class="input" value="<?php echo $product['job_time']?>">
+            </div>
+
+            <div style="width:70%;margin:0 auto;padding:5px 0;">
               <label for="">Product Amount</label>
               <input disabled type="text" class="input" value="<?php echo $product['amount']?>">
             </div>
