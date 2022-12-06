@@ -24,7 +24,7 @@
                             My Job
                             <small>(Need Aproved)</small>
                         </caption>
-                        <thead>
+                        <thead> 
                             <tr>
                                 <th>Job Name</th>
                                 <th>Discription</th>
