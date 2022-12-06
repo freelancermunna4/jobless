@@ -18,7 +18,7 @@
 
         $file_name2 = $_FILES['file2']['name'];
         $file_tmp2 = $_FILES['file2']['tmp_name'];
-        move_uploaded_file($file_tmp2,"upload/$file_name2");
+        move_uploaded_file($file_tmp2,"upload/$file_name2"); 
 
         $file_name3 = $_FILES['file3']['name'];
         $file_tmp3 = $_FILES['file3']['tmp_name'];
