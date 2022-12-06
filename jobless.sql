@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 05, 2022 at 09:47 PM
--- Server version: 10.3.37-MariaDB-log-cll-lve
--- PHP Version: 7.4.30
+-- Host: 127.0.0.1
+-- Generation Time: Dec 06, 2022 at 07:23 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `joblessadmin_new`
+-- Database: `jobless`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +37,7 @@ CREATE TABLE `activity` (
   `last_name` varchar(500) NOT NULL,
   `image` varchar(999) NOT NULL,
   `tim` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `activity`
@@ -4357,7 +4356,13 @@ INSERT INTO `activity` (`id`, `my_id`, `my_name`, `clint_id`, `clint_name`, `mid
 (4430, 1058, 'Mahmud', 1, 'SHAMIM REZA', 'Successfully Watch', 'Video', 'assets/icons/youtube.svg', 1670153089),
 (4431, 1058, 'Mahmud', 1, 'SHAMIM REZA', 'Successfully Watch', 'Video', 'assets/icons/youtube.svg', 1670235455),
 (4432, 1058, 'Mahmud', 1, 'SHAMIM REZA', 'Successfully Watch', 'Video', 'assets/icons/youtube.svg', 1670235503),
-(4433, 1058, 'Mahmud', 1, 'SHAMIM REZA', 'Successfully Watch', 'Video', 'assets/icons/youtube.svg', 1670235581);
+(4433, 1058, 'Mahmud', 1, 'SHAMIM REZA', 'Successfully Watch', 'Video', 'assets/icons/youtube.svg', 1670235581),
+(4434, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670260585),
+(4435, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670260629),
+(4436, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670261650),
+(4437, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670346153),
+(4438, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670346267),
+(4439, 611, 'munna', 611, 'Your', 'Succesfully Publish', 'Product', 'assets/icons/work.svg', 1670346357);
 
 -- --------------------------------------------------------
 
@@ -4371,7 +4376,7 @@ CREATE TABLE `admin_activity` (
   `coin` int(11) NOT NULL,
   `win_lose` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_activity`
@@ -4485,7 +4490,7 @@ CREATE TABLE `admin_profit` (
   `coin` float(8,2) NOT NULL,
   `activity` int(11) NOT NULL,
   `tim` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_profit`
@@ -4505,7 +4510,7 @@ CREATE TABLE `ads` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `code` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ads`
@@ -4529,7 +4534,7 @@ CREATE TABLE `all_tiket` (
   `msg` longtext NOT NULL,
   `img` longtext NOT NULL,
   `tim` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `all_tiket`
@@ -4558,7 +4563,7 @@ CREATE TABLE `ban_reasons` (
   `user` int(11) NOT NULL DEFAULT 0,
   `reason` text NOT NULL,
   `date` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -4573,7 +4578,7 @@ CREATE TABLE `contactpage` (
   `msg` longtext NOT NULL,
   `time` int(11) NOT NULL,
   `riply` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contactpage`
@@ -4606,7 +4611,7 @@ CREATE TABLE `coustom_config` (
   `id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `c_value` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `coustom_config`
@@ -4626,12 +4631,12 @@ CREATE TABLE `deposit` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `coins` decimal(8,2) UNSIGNED NOT NULL DEFAULT 0.00,
-  `method` varchar(32) NOT NULL,
-  `trx_id` varchar(520) NOT NULL,
+  `method` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `trx_id` varchar(520) COLLATE utf8_unicode_ci NOT NULL,
   `timestamp` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `status` int(2) UNSIGNED NOT NULL DEFAULT 0,
-  `payment_info` varchar(255) NOT NULL,
-  `myId` varchar(255) NOT NULL,
+  `payment_info` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `myId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `commition` float(8,2) NOT NULL,
   `tim` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -4669,7 +4674,7 @@ CREATE TABLE `deposit_config` (
   `curency` varchar(25) NOT NULL,
   `payment_discription` varchar(255) NOT NULL,
   `activity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `deposit_config`
@@ -4695,7 +4700,7 @@ CREATE TABLE `dummy_websurf` (
   `web_id` int(11) NOT NULL,
   `hash` int(11) NOT NULL,
   `hash2` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dummy_websurf`
@@ -4984,7 +4989,7 @@ CREATE TABLE `faq` (
   `id` int(11) UNSIGNED NOT NULL,
   `question` varchar(255) NOT NULL,
   `answer` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5000,7 +5005,7 @@ CREATE TABLE `game` (
   `two` int(11) NOT NULL,
   `three` int(11) NOT NULL,
   `four` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `game`
@@ -5029,7 +5034,7 @@ CREATE TABLE `googleads` (
   `name` varchar(100) NOT NULL,
   `code` longtext NOT NULL,
   `activity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `googleads`
@@ -5058,7 +5063,7 @@ CREATE TABLE `job_submit` (
   `oldUrl` varchar(1000) NOT NULL,
   `submiturl` varchar(5000) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `job_submit`
@@ -5180,7 +5185,7 @@ CREATE TABLE `job_system` (
   `web_link` varchar(5000) NOT NULL,
   `job_time` timestamp NOT NULL DEFAULT current_timestamp(),
   `contact` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `job_system`
@@ -5210,7 +5215,7 @@ CREATE TABLE `list_countries` (
   `id` int(11) NOT NULL,
   `country` varchar(255) NOT NULL DEFAULT '',
   `code` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `list_countries`
@@ -5659,7 +5664,7 @@ CREATE TABLE `lottarybuy` (
   `usr_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5675,7 +5680,7 @@ CREATE TABLE `lotterywinner` (
   `price` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5692,7 +5697,7 @@ CREATE TABLE `louckycoupon` (
   `userid` int(11) NOT NULL,
   `sername` varchar(255) NOT NULL,
   `userphon` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `louckycoupon`
@@ -5716,7 +5721,7 @@ CREATE TABLE `louckywinner` (
   `phone` varchar(255) NOT NULL,
   `tim` int(25) NOT NULL,
   `activity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `louckywinner`
@@ -5857,7 +5862,7 @@ CREATE TABLE `luckycupon` (
   `CuponCode` varchar(255) NOT NULL,
   `tim` int(11) NOT NULL,
   `louckyPrice` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `luckycupon`
@@ -5876,7 +5881,7 @@ CREATE TABLE `notice` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `notice` varchar(999) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notice`
@@ -5894,6 +5899,41 @@ INSERT INTO `notice` (`id`, `name`, `notice`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_system`
+--
+
+CREATE TABLE `product_system` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `product_title` varchar(400) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `activity` int(255) NOT NULL,
+  `work_discription` longtext NOT NULL,
+  `web_link` varchar(5000) NOT NULL,
+  `job_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `contact` varchar(250) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL DEFAULT 'no-photo-available.png',
+  `file2` varchar(255) NOT NULL,
+  `file3` varchar(255) NOT NULL,
+  `file4` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `conditions` varchar(255) NOT NULL,
+  `time` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_system`
+--
+
+INSERT INTO `product_system` (`id`, `uid`, `product_title`, `amount`, `activity`, `work_discription`, `web_link`, `job_time`, `contact`, `category`, `file`, `file2`, `file3`, `file4`, `status`, `conditions`, `time`) VALUES
+(376, 611, 'Realme 9 pro+ 8/256 intact Boxed', 200, 1, 'Condition:\nNew\nBrand:\nRealme\nModel:\n9 pro+\nEdition:\n8/256 intact Boxed\nAuthenticity:\nOriginal\nFeatures\nBluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Motion Sensors, 3G, 4G, 5G, GSM, Touch screen\n\nDescription\n# INTACT SEAL PACK WITH WARRANTY\n\n# 16 mp Selfie &amp; 50+8+2 MP Camera\n\n# 8 gb Ram &amp; 256 gb Rom', 'https://bikroy.com/en/ad/realme-9-pro-8-256-intact-boxed-new-for-sale-chattogram', '2022-12-06 17:02:33', '01784489555', 'Others', 'realme-9-pro (1).jpg', '20220719_1658226195_594632.jpeg', 'Realme-9-Pro.webp', 'product_1642515731Realme-9-Pro.jpg', 'Premium', 'Running', 1670346153),
+(377, 611, 'Xiaomi Poco X3 6+2/128 gb (Used)', 300, 1, '\nCondition:\nUsed\nBrand:\nXiaomi\nModel:\nPoco X3\nEdition:\n6+2/128 gb\nAuthenticity:\nOriginal\nFeatures\nBluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, 5G, GSM, Touch screen\n\nDescription\nনতুন ফোন ১ মাস উইজ করা হয়েছে মাত্র ফুল বক্স  চাজার সব কিছু আছে\nকোন সমস্যা নেই টাকা র দরকার তাই বিক্রি করে দিবো\n যদি কারো ভালো লাগে তা হলে নিতে পারেন কোনো দামা দামী করবেনা \nভাই দাম ১০০০% ফিক্সড দাম পছন্দ হলে কল দিবেন দাম পছন্দ না হলে কল দিবে না না না \n আর ফোন নিতে হলে লোকেশন আসতে হবে ধোলাই পাড় বাজার ', 'https://bikroy.com/en/ad/xiaomi-poco-x3-62-128-gb-used-for-sale-dhaka-10', '2022-12-06 17:04:27', '0123456789', 'Video', 'fitted (3).jpg', 'fitted (2).jpg', 'fitted.jpg', 'fitted (1).jpg', 'Premium', 'Running', 1670346267),
+(378, 611, 'Vivo Y11 3/32 (Used)', 0, 1, 'Condition:\r\nUsed\r\nBrand:\r\nVivo\r\nModel:\r\nY11\r\nEdition:\r\n3/32\r\nAuthenticity:\r\nOriginal\r\nFeatures\r\nBluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, GSM, Touch screen\r\n\r\nDescription\r\nফোনের কন্ডিশন একদম নতুনের মতই এখনো কোনো সার্ভিস হয়নি কাগজ পাতি মেমো ফুল বক্স চার্জার সবকিছু আছে', 'https://bikroy.com/en/ad/vivo-y11-3-32-used-for-sale-rangpur-297', '2022-12-06 17:05:57', 'support@joblessbd.com', 'Website', 'fitted (5).jpg', 'fitted (4).jpg', 'no-photo-available.png', 'no-photo-available.png', 'Free', 'Running', 1670346357);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ref_commissions`
 --
 
@@ -5903,7 +5943,7 @@ CREATE TABLE `ref_commissions` (
   `referral` int(11) NOT NULL DEFAULT 0,
   `commission` decimal(6,2) NOT NULL DEFAULT 0.00,
   `date` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5912,8 +5952,8 @@ CREATE TABLE `ref_commissions` (
 --
 
 CREATE TABLE `site_config` (
-  `config_name` varchar(255) NOT NULL,
-  `config_value` text NOT NULL
+  `config_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `config_value` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -5964,7 +6004,7 @@ CREATE TABLE `tamporaryphone` (
   `id` int(11) NOT NULL,
   `unam` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tamporaryphone`
@@ -8766,7 +8806,7 @@ CREATE TABLE `tiketsystem` (
   `replymsg` int(11) NOT NULL,
   `close` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tiketsystem`
@@ -8791,7 +8831,7 @@ CREATE TABLE `tottery` (
   `lprice` int(5) NOT NULL,
   `wintime` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tottery`
@@ -8809,18 +8849,18 @@ INSERT INTO `tottery` (`id`, `name`, `price`, `img`, `lprice`, `wintime`, `time`
 
 CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
-  `user` text NOT NULL,
+  `user` text COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT 0,
   `type` int(11) NOT NULL DEFAULT 0,
   `amount` int(11) NOT NULL DEFAULT 0,
   `ad_pack` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `money` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `gateway` varchar(64) NOT NULL DEFAULT 'paypal',
+  `gateway` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'paypal',
   `date` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `paid` int(11) NOT NULL DEFAULT 1,
-  `payer_email` varchar(128) DEFAULT NULL,
-  `trans_id` varchar(128) NOT NULL,
-  `user_ip` varchar(64) DEFAULT NULL
+  `payer_email` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trans_id` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `user_ip` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -8831,27 +8871,27 @@ CREATE TABLE `transactions` (
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `mobile` varchar(55) NOT NULL,
-  `fullname` varchar(25) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(128) NOT NULL,
+  `mobile` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `fullname` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `coins` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `image` varchar(999) NOT NULL,
+  `image` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
   `totalarn` decimal(10,2) NOT NULL,
   `admin` smallint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `country` varchar(255) NOT NULL,
-  `address` varchar(999) NOT NULL,
-  `city` varchar(500) NOT NULL,
-  `zipcod` varchar(50) NOT NULL,
-  `datebirth` varchar(55) NOT NULL,
-  `facebook` text NOT NULL,
-  `twiter` varchar(999) NOT NULL,
+  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `zipcod` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `datebirth` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `facebook` text COLLATE utf8_unicode_ci NOT NULL,
+  `twiter` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
   `reg_time` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `last_activity` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `ref` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `reg_ip` varchar(64) NOT NULL DEFAULT '0',
-  `log_ip` varchar(64) NOT NULL,
-  `activate` varchar(32) NOT NULL DEFAULT '0',
+  `reg_ip` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `log_ip` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `activate` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `disabled` smallint(1) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -8911,7 +8951,7 @@ INSERT INTO `users` (`id`, `mobile`, `fullname`, `email`, `password`, `coins`, `
 (609, '01752010126', 'Abdul Momin', 'infoam7420@gmail.com', '3fac3c329293c9155f4393a4073ad893', '0.20', 'assets/images/635174fe420e00.51113337.jpg', '0.00', 0, 'Bangladesh', ' Sonargoan, Narayanganj, Dhaka', ' Sonargoan', '1441', '1996-06-06', 'https://www.facebook.com/amkaif.me', '', 1666207477, 1666503386, 0, '0', '', '0', 0),
 (610, '01979202182', 'Shaonmollick', 'shaon795@gmail.com', 'b2522884e2e1ba159f3fbae3dbe7b4d8', '0.00', '', '0.00', 0, '', '', '', '', '', '', '', 1666209485, 1666475014, 0, '0', '', '0', 0),
 (612, '01305511268', 'Gsm Redoy Hasan', 'statusunlimited02@gmail.com', '448ea05f2f47f75d987acdac6bf1b67d', '0.50', 'assets/images/635062d7309cf7.01339847.jpg', '0.00', 0, 'Bangladesh', '  30no Devidashgaat, Lalbagh , Dhaka', '  Dhaka', '1211', '1995-12-25', 'https://www.facebook.com/Redoy.01305511268/', '', 1666212144, 1668947128, 0, '0', '', '0', 0),
-(611, '01784489515', 'munna', 'freelancermunna4@gmail.com', 'e75ffb011da18a2324ce673918af6272', '1000.30', 'assets/images/63518ec09cc6b6.08113374.jpg', '0.00', 1, 'Bangladesh', '         sirajganj,bangladesh', '         sirajganj', '3320', '2003-12-08', '', '', 1666210124, 1670011616, 0, '0', '', '0', 0),
+(611, '01784489515', 'munna', 'freelancermunna4@gmail.com', 'e75ffb011da18a2324ce673918af6272', '278.30', 'assets/images/638ec9948eea07.54942750.jpg', '0.00', 1, 'Bangladesh', '          sirajganj,bangladesh', '          sirajganj', '3320', '2003-12-08', '', '', 1666210124, 1670350945, 0, '0', '', '0', 0),
 (613, '01966962040', 'Nahid Hasan Parag', '6monthtryyt@gmail.com', '95abc56ffbe5db0f3129b0c2a94c7c5c', '0.10', '', '0.00', 0, '', '', '', '', '', '', '', 1666212334, 1666212550, 0, '0', '', '0', 0),
 (614, '01835926169', 'Md Abid Ahmed', 'mdabidctg69@gmail.com', '7b216bfec7a1e53b9ed698c6a1fd5c66', '0.20', 'assets/images/635064ec927007.01675003.jpg', '0.00', 0, 'Bangladesh', ' Shantir hat, Patiya', ' Chittagong ', '4370', '2001-01-24', 'https://www.facebook.com/profile.php?id=100012206084865', '', 1666212897, 1666266313, 0, '0', '', '0', 0),
 (615, '01585421128', 'Mohammad Saiful ', 'tuhin09871231020', 'ded8e5f5d1445e137414d36dfb0e8d10', '0.10', '', '0.00', 0, '', '', '', '', '', '', '', 1666225654, 1666368521, 0, '0', '', '0', 0),
@@ -9690,7 +9730,7 @@ CREATE TABLE `users_deleted` (
   `pass` varchar(32) DEFAULT NULL,
   `sex` int(11) NOT NULL DEFAULT 0,
   `country` varchar(64) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9705,7 +9745,7 @@ CREATE TABLE `user_transactions` (
   `value` int(11) NOT NULL DEFAULT 0,
   `cash` decimal(10,2) NOT NULL DEFAULT 0.00,
   `date` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9715,7 +9755,7 @@ CREATE TABLE `user_transactions` (
 
 CREATE TABLE `vad_packs` (
   `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `coins` decimal(4,2) UNSIGNED NOT NULL DEFAULT 0.00,
   `time` int(3) UNSIGNED NOT NULL DEFAULT 0,
   `activity` int(11) NOT NULL
@@ -9746,17 +9786,17 @@ INSERT INTO `vad_packs` (`id`, `name`, `coins`, `time`, `activity`) VALUES
 CREATE TABLE `vad_temporary` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `video_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `video_id` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 NOT NULL,
   `daily_clicks` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `status` smallint(2) UNSIGNED NOT NULL DEFAULT 0,
   `ad_pack` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `clicks` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `country` varchar(65) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `country` varchar(65) CHARACTER SET utf8 NOT NULL,
   `gender` smallint(2) UNSIGNED NOT NULL DEFAULT 0,
   `time` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `reference_number` varchar(64) NOT NULL,
-  `gateway` varchar(64) NOT NULL
+  `reference_number` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `gateway` varchar(64) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -9779,7 +9819,7 @@ CREATE TABLE `vad_videos` (
   `tim` int(11) NOT NULL,
   `coins` decimal(8,2) NOT NULL,
   `time` int(11) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vad_videos`
@@ -9803,15 +9843,6 @@ CREATE TABLE `vad_videos_done` (
   `time` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `skip` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `vad_videos_done`
---
-
-INSERT INTO `vad_videos_done` (`id`, `user_id`, `video_id`, `time`, `skip`) VALUES
-(2526, 1058, 190, 1670235581, 0),
-(2525, 1058, 188, 1670235503, 0),
-(2524, 1058, 189, 1670235455, 0);
 
 -- --------------------------------------------------------
 
@@ -10542,7 +10573,7 @@ CREATE TABLE `web_report` (
   `webid` int(11) NOT NULL,
   `msg` varchar(2500) NOT NULL,
   `tim` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `web_report`
@@ -10578,7 +10609,7 @@ CREATE TABLE `web_surfing` (
   `dailyClick` int(11) NOT NULL,
   `activity` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `web_surfing`
@@ -10601,7 +10632,7 @@ CREATE TABLE `web_surfing_done` (
   `s_type` int(11) NOT NULL,
   `s_time` int(11) NOT NULL,
   `skip` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `web_surfing_done`
@@ -11187,7 +11218,7 @@ INSERT INTO `web_surfing_done` (`id`, `user_id`, `web_id`, `s_type`, `s_time`, `
 
 CREATE TABLE `web_surfing_pckks` (
   `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `coins` decimal(4,2) UNSIGNED NOT NULL DEFAULT 0.00,
   `time` int(3) UNSIGNED NOT NULL DEFAULT 0,
   `activity` int(11) NOT NULL
@@ -11218,7 +11249,7 @@ CREATE TABLE `withdawl_config` (
   `curency` varchar(25) NOT NULL,
   `payment_discription` varchar(255) NOT NULL,
   `usd_convert_rate` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `withdawl_config`
@@ -11240,9 +11271,9 @@ CREATE TABLE `withdrawals` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `coins` decimal(8,2) UNSIGNED NOT NULL DEFAULT 0.00,
-  `method` varchar(32) NOT NULL,
+  `method` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(2) UNSIGNED NOT NULL DEFAULT 0,
-  `payment_info` varchar(255) NOT NULL,
+  `payment_info` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contact` int(20) NOT NULL,
   `tim` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -11259,7 +11290,7 @@ CREATE TABLE `youtube_report` (
   `user_id` int(11) NOT NULL,
   `report` varchar(1000) NOT NULL,
   `ctime` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -11279,7 +11310,7 @@ CREATE TABLE `youtube_subscribe` (
   `today_clicks` int(11) NOT NULL,
   `dailyClick` int(11) NOT NULL,
   `time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `youtube_subscribe`
@@ -11300,7 +11331,7 @@ CREATE TABLE `youtube_sub_done` (
   `channel_id` varchar(250) NOT NULL,
   `s_type` int(11) NOT NULL,
   `s_time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `youtube_sub_done`
@@ -11408,7 +11439,7 @@ INSERT INTO `youtube_sub_done` (`id`, `user_id`, `channel_id`, `s_type`, `s_time
 
 CREATE TABLE `youtube_sub_packs` (
   `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `coins` decimal(4,2) UNSIGNED NOT NULL DEFAULT 0.00,
   `time` int(3) UNSIGNED NOT NULL DEFAULT 0,
   `activity` int(11) NOT NULL
@@ -11545,6 +11576,12 @@ ALTER TABLE `notice`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_system`
+--
+ALTER TABLE `product_system`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `site_config`
 --
 ALTER TABLE `site_config`
@@ -11673,7 +11710,7 @@ ALTER TABLE `youtube_sub_packs`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4434;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4440;
 
 --
 -- AUTO_INCREMENT for table `admin_activity`
@@ -11782,6 +11819,12 @@ ALTER TABLE `luckycupon`
 --
 ALTER TABLE `notice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `product_system`
+--
+ALTER TABLE `product_system`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
 
 --
 -- AUTO_INCREMENT for table `tiketsystem`
