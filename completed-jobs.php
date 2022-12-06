@@ -26,7 +26,7 @@
                                 <th>Old Url</th>
                                 <th>Submited Url</th>
                                 <th>Price</th>
-                                <th>Status</th>
+                                <th>Status</th> 
                             </tr>
                         </thead>
                         <tbody>
