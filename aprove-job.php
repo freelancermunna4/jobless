@@ -28,7 +28,7 @@
                             <tr>
                                 <th>Job Name</th>
                                 <th>Discription</th>
-                                <th>Old Url</th>
+                                <th>Old Url</th> 
                                 <th>Submited Url</th>
                                 <th>Status</th>
                             </tr>
