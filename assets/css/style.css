@@ -765,7 +765,6 @@ footer.main_footer .footer_container .footer_right {
   padding: 20px;
   display: flex;
   gap: 0 6px;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -784,7 +783,7 @@ footer.main_footer .footer_container .footer_right {
   .user_info_wrapper
   .user_details
   .username {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -3296,31 +3295,89 @@ footer.main_footer .footer_container .footer_right {
   opacity: 0.7;
 }
 
-.pr_sidebar{
+.pr_sidebar {
   padding: 10px;
 }
-.pr_sidebar ul{
-  border:1px solid black;
+.pr_sidebar ul {
+  border: 1px solid black;
   padding: 20px;
 }
-.pr_sidebar ul li{
-  padding:10px 20px;
+.pr_sidebar ul li {
+  padding: 10px 20px;
   list-style: none;
-
 }
 
-.filter{
+.filter {
   text-align: center;
   display: flex;
   justify-content: space-between;
   padding: 0px 12px;
 }
-.filter select,input,button{
+.filter select,
+input,
+button {
   padding: 5px 10px;
   border: 1px solid #918f8f;
   border-radius: 4px;
   outline: none;
 }
-.filter select:hover,input:hover,button:hover{
+.filter select:hover,
+input:hover,
+button:hover {
   border: 1px solid #209300;
+}
+
+.pr_page {
+  display: flex;
+}
+.pr_page_div1 {
+  width: 65%;
+}
+.pr_page_div2 {
+  width: 33%;
+  margin-right: 0;
+}
+.pr_box {
+  width: 15%;
+  height: 90px;
+  display: block;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.file_upload {
+  display: flex;
+  gap: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .filter {
+    display: block;
+  }
+
+  .filter select,
+  input,
+  button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .filter input,
+  button {
+    display: inline-block;
+    width: 49%;
+  }
+
+  .pr_page {
+    display: block;
+  }
+  .pr_page_div1,
+  .pr_page_div2 {
+    width: 100%;
+  }
+  .pr_box {
+    height: 50px;
+  }
+  .file_upload {
+    display: block;
+  }
 }

@@ -106,7 +106,7 @@
                             <?php $admin=$data['admin'];
                             if($admin==1){ ?>
                             <li>
-                                <a href="<?= $config['site_url'] ?>/admin">
+                                <a target="_blank" href="admin/index.php">
                                     <span class="icon"><i class="fa-solid fa-user"></i> </span>
                                     <span class="text">Admin Panel</span>
                                 </a>

@@ -135,7 +135,7 @@
 
                     <div class="form_item full_col">
                         <label for="add_image">Upload Some Image For Product</label>
-                        <div style="display:flex;gap:15px;">
+                        <div class="file_upload">
                         <input type="file" name="file" style="margin:0;padding:10px 10px;"/>
                         <input type="file" name="file2" style="margin:0;padding:10px 10px;"/>
                         <input type="file" name="file3" style="margin:0;padding:10px 10px;"/>

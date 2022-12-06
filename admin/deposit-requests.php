@@ -15,7 +15,7 @@
                         <input type="text" id="srcvalue" placeholder="Transaction ID / Mobile No"
                             style="padding: 8px;border: 1px solid;">
                         <button
-                            style="padding: 10px 15px 10px 15px;margin-right: 12px;background: #0e33f78a;box-sizing: border-box;border-radius: 7px;"
+                            style="padding: 10px 15px 10px 15px;margin-right: 12px;background: #0e33f78a;color:#fff;box-sizing: border-box;border-radius: 7px;"
                             onclick="getsearch()">Search</button>
                     </div>
                 <!-- Table -->

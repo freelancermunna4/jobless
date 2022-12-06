@@ -15,6 +15,12 @@
         <div class="overflow-x-auto rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-auto bg-white">
+                <form action="" method="GET">
+                        <div style="text-align: right;margin: 5px;padding-top: 10px;">
+                            <input name="src" type="search" id="srcvalue" placeholder="Search Here..." style="padding: 8px;border: 1px solid;">
+                            <button type="submit" name="search" style="padding: 10px 15px 10px 15px;margin-right: 12px;background: #0e33f78a;color:#fff;box-sizing: border-box;border-radius: 7px;">Search</button>
+                        </div>
+                    </form>
                     <!-- Table -->
                     <table class="min-w-full divide-y divide-gray-200 table-fixed">
                         <thead class="bg-white">
@@ -36,6 +42,12 @@
                         <tbody class="bg-white divide-y divide-gray-200">
 
                                 <?php
+                                if(isset($_GET['src'])){
+                                    $src = trim($_GET['src']);
+                                    $products = $db->Query("SELECT product_system.*,users.* FROM product_system INNER JOIN users ON product_system.uid = users.id WHERE product_system.activity=1 AND product_system.conditions='Running' AND ( users.fullname = '$src' OR users.email = '$src' OR product_system.product_title = '$src' OR product_system.amount = '$src' OR product_system.category = '$src' OR product_system.status = '$src' )");                       
+
+                                }else{
+
                                 if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                                 $page_no = $_GET['page_no'];} else {$page_no = 1;}
                                 $total_records_per_page = 8;
@@ -50,6 +62,7 @@
                                 $total_records = mysqli_num_rows($result_count);
                                 $total_no_of_pages = ceil($total_records / $total_records_per_page);
                                 $second_last = $total_no_of_pages - 1;
+                            }
                                 
                                 foreach($products as $product){
                                  $user_id = $product['uid'];

@@ -20,42 +20,48 @@
                 <?php if(!empty($top_ad['code'])){  echo base64_decode($top_ad['code']);} ?>
             </div>
             <br /><br />
-            <div class="page_content" style="display:flex;">
-                <div style="width:65%">
+            <div class="page_content pr_page">
+                <div class="pr_page_div1">
                     <div class="cf_wrapper">
-                        <img id="main_img" style="width:100%;height:400px;display:block;border-radius:5px;object-fit:cover" src="upload/<?php echo $product['file'];?>">                        
+                        <img id="main_img" style="width:100%;height:400px;display:block;border-radius:5px;object-fit:contain" src="upload/<?php echo $product['file'];?>">                        
                         <br>
-                        <div style="display:flex;align-items:space-between;justify-content: space-evenly;">
-                        <img id="img1" style="width:22%;height:100px;display:block;border-radius:5px;" src="upload/<?php echo $product['file'];?>">
+                        <div style="display:flex;gap:10px;justify-content:center;">
+                        <img id="img1" class="pr_box" src="upload/<?php echo $product['file'];?>">
                         <?php if($product['file2'] == 'no-photo-available.png'){ ?><?php }else{?>
-                        <img id="img2" style="width:22%;height:100px;display:block;border-radius:5px;" src="upload/<?php echo $product['file2'];?>">
+                        <img id="img2" class="pr_box" src="upload/<?php echo $product['file2'];?>">
                         <?php }?>
                         <?php if($product['file3'] == 'no-photo-available.png'){ ?><?php }else{?>
-                        <img id="img3" style="width:22%;height:100px;display:block;border-radius:5px;" src="upload/<?php echo $product['file3'];?>">
+                        <img id="img3" class="pr_box" src="upload/<?php echo $product['file3'];?>">
                         <?php }?>
                         <?php if($product['file4'] == 'no-photo-available.png'){ ?><?php }else{?>
-                        <img id="img4" style="width:22%;height:100px;display:block;border-radius:5px;" src="upload/<?php echo $product['file4'];?>">
+                        <img id="img4" class="pr_box" src="upload/<?php echo $product['file4'];?>">
                         <?php }?>
                         </div>
                         <br>
                         <h4 style="text-align:center"><b><?php echo $product['product_title'];?></b></h4>
                     </div>
-                    <div class="cf_wrapper" style="color:gray">
-                    <?php echo $product['work_discription'];?>
+                    <div class="cf_wrapper" style="color:gray;overflow:auto;">
+                        <pre><?php echo $product['work_discription'];?></pre>
                     </div>
                 </div>
-                <div class="cf_wrapper" style="width:33%;margin-right:0;">
+                <div class="cf_wrapper pr_page_div2" >
                     <div class="pr_sidebar">
                         <ul>
                             <li>For sale by <b><?php echo $user_info['fullname'];?></b></li>
                             <hr>
-                            <li>Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['amount'];?></b></li>
+                            <li>Price: <b><?php echo $product['amount'];?></b></li>
                             <?php if(empty($product['web_link'])){  }else{ ?>
-                            <li>URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['web_link'];?></b></li>
+                            <li>URL: <b><a target="_blank" href="<?php echo $product['web_link'];?>"><?php echo $product['web_link'];?></a></b></li>
                             <?php  }?>
-                            <li>Category:&nbsp; <b><?php echo $product['category'];?></b></li> 
-                            <li>Contact:&nbsp;&nbsp;&nbsp; <b><?php echo $product['contact'];?></b></li>
-                            <li>Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><?php echo $product['job_time'];?></b></li>
+                            <li>Category: <b><?php echo $product['category'];?></b></li>
+                            
+                            <?php 
+                            if(is_numeric($product['contact'])){ ?>
+                            <li>Contact: <b><a href="tel:<?php echo $product['contact'];?>"><?php echo $product['contact'];?></a></b></li>
+                            <?php  }else{?>
+                                <li>Contact: <b><a href="mailto:<?php echo $product['contact'];?>"><?php echo $product['contact'];?></a></b></li>
+                                <?php }?>
+                            <li>Date: <b><?php echo $product['job_time'];?></b></li>
                         </ul>
                         <ul>
                             <li style="padding-left:15px;"><i style="color:skyblue" class="fa-solid fa-shield"></i><b> Safety tips</b></li>

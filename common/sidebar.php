@@ -20,15 +20,7 @@
                         <h6 class="username">
                             <?php if($is_online){echo $data['fullname'];}else{ echo ' <span class="login_btn show_fsp" data-ref="login">Please Login</span>'; }?>
                         </h6>
-                        <div>
-                            <?php if($is_online){ ?>
-                            <a href="my-account">My Account</a>
-                            <span>|</span>
-                            <button class="log-out">Logout</button>
-                            <?php }?>
-
-
-                        </div>
+                        
                     </div>
                 </div>
 
