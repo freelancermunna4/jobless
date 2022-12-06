@@ -17,7 +17,7 @@
                     <div class="form_item">
                         <label for="youtube_url">Youtube URL</label>
                         <input type="text" id="youtube_urls" placeholder="https://www.youtube.com/watch?v=RgzLnaCAU"
-                            required />
+                            required /> 
                     </div>
 
                     <div class="form_item">
