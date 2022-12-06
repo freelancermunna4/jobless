@@ -18,7 +18,7 @@
         </div>
             <div class="table_wrapper">
                 <div class="table">
-                    <table>
+                    <table> 
                         <caption>Pending List</caption>
                         <thead>
                             <tr>
