@@ -40,12 +40,10 @@
                             <?php }else{?>
                             <option selected style="display:none">CATEGORY</option>
                             <?php }?>
-                            <option value="Website">Website</option>
-                            <option value="Graphic">Graphic</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                            <option value="Video">Video</option>
-                            <option value="Audio">Audio</option>
-                            <option value="Others">Others</option>
+                            <?php $categories =$db->Query("SELECT * FROM product_category ORDER BY id DESC");                                
+                            while($category = mysqli_fetch_assoc($categories)){?>
+                            <option value="<?php echo $category['category']?>"><?php echo $category['category']?></option>
+                            <?php }?>
                     </select>
                 </div>
                 <div>
